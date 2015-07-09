@@ -9,13 +9,19 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float jumpAccel = 0.3f;
     [SerializeField] private float initJumpSpeed = 3.0f;
 
-    private bool myDirection = true; //Determines players facing direction so the sprite matches. true = right
+    private bool myDirection = true; //Determines players facing direction so the sprite matches. true = right(May not use this)
+    private bool canJump = true;
+    private bool onGround = false;
+    private float timeHoldingInput = 0.0f;
+
     private Animator myAnim;
+    private Rigidbody2D rB; // used to access the rigidbody component
 
 	// Use this for initialization
 	void Start ()
     {
         myAnim = GetComponent<Animator>();
+        rB = GetComponent<Rigidbody2D>(); 
 	}
 	
 	// Update is called once per frame
@@ -26,34 +32,25 @@ public class PlayerController : MonoBehaviour {
 
     void MovementControl()
 	{
-		float direction = Input.GetAxis("Horizontal");
+        if (Input.GetButtonDown("Jump"))
+        {
+            HandleJumping();
+        }
+
+		float direction = Input.GetAxis("Horizontal"); //The float value of the horizontal input
 		
-		Vector2 accel = new Vector2(runAccel * direction, 0);
+		Vector2 accel = new Vector2(runAccel * direction, 0); //The acceleration of the players movement
 
-        Rigidbody2D rB = GetComponent<Rigidbody2D>();
-
-		if(direction > 0)
+		if(direction > 0) //If true, player is moving right
 		{
 			myDirection = true;
-			/*if(curState != PlayerStates.IN_AIR)
-			{
-				anim.SetBool("isRunning", true);
-			}*/
-			//transform.localScale = new Vector3 (7, transform.localScale.y, transform.localScale.z);
-			//renderer.material.color = Color.red;
 		}
-		else if(direction < 0)
+		else if(direction < 0) //if true, player is moving left
 		{
 			myDirection = false;
-			/*if(curState != PlayerStates.IN_AIR)
-			{
-				anim.SetBool("isRunning", true);
-			}
-			transform.localScale = new Vector3 (-7, transform.localScale.y, transform.localScale.z);*/
-			//renderer.material.color = Color.green;
 		}
 
-		if(direction != 0f)
+		if(direction != 0f) 
 		{
             myAnim.SetBool("Moving", true);
 			rB.velocity += accel;
@@ -77,6 +74,11 @@ public class PlayerController : MonoBehaviour {
         myAnim.SetFloat("Direction", direction);
         
 	}
+
+    void HandleJumping()
+    {
+        rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed);
+    }
 
 
 }
