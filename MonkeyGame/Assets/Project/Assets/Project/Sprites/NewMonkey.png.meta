@@ -1,0 +1,407 @@
+fileFormatVersion: 2
+guid: c7461a9a2babf4b4aa03670898107832
+timeCreated: 1436554731
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: NewMonkey_0
+    21300002: NewMonkey_1
+    21300004: NewMonkey_2
+    21300006: NewMonkey_3
+    21300008: NewMonkey_4
+    21300010: NewMonkey_5
+    21300012: NewMonkey_6
+    21300014: NewMonkey_7
+    21300016: NewMonkey_8
+    21300018: NewMonkey_9
+    21300020: NewMonkey_10
+    21300022: NewMonkey_11
+    21300024: NewMonkey_12
+    21300026: NewMonkey_13
+    21300028: NewMonkey_14
+    21300030: NewMonkey_15
+    21300032: NewMonkey_16
+    21300034: NewMonkey_17
+    21300036: NewMonkey_18
+    21300038: NewMonkey_19
+    21300040: NewMonkey_20
+    21300042: NewMonkey_21
+    21300044: NewMonkey_22
+    21300046: NewMonkey_23
+    21300048: NewMonkey_24
+    21300050: NewMonkey_25
+    21300052: NewMonkey_26
+    21300054: NewMonkey_27
+    21300056: NewMonkey_28
+    21300058: NewMonkey_29
+    21300060: NewMonkey_30
+    21300062: NewMonkey_31
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: NewMonkey_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1455
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1455
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_2
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1455
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1455
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_4
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1455
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_5
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1455
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_6
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 1455
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_7
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1417
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1417
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_9
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1417
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_10
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1417
+        width: 34
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_11
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 1418
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_12
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 1418
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_13
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1418
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_14
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1379
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_15
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1379
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_16
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1379
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_17
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1381
+        width: 34
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_18
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1326
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1326
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_20
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1326
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_21
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1326
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_22
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1326
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_23
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1326
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_24
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 1326
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_25
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1288
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_26
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1288
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_27
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1288
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_28
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1288
+        width: 34
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_29
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1250
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_30
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1250
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NewMonkey_31
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1250
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

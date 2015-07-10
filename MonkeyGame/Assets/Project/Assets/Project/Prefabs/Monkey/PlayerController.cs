@@ -37,6 +37,11 @@ public class PlayerController : MonoBehaviour {
             HandleJumping();
         }
 
+        if (Input.GetButtonUp("Jump"))
+        {
+            myAnim.SetBool("Jumping", false);
+        }
+
 		float direction = Input.GetAxis("Horizontal"); //The float value of the horizontal input
 		
 		Vector2 accel = new Vector2(runAccel * direction, 0); //The acceleration of the players movement
@@ -44,10 +49,12 @@ public class PlayerController : MonoBehaviour {
 		if(direction > 0) //If true, player is moving right
 		{
 			myDirection = true;
+            transform.localScale = new Vector3(-5, transform.localScale.y, transform.localScale.z);
 		}
 		else if(direction < 0) //if true, player is moving left
 		{
 			myDirection = false;
+            transform.localScale = new Vector3(5, transform.localScale.y, transform.localScale.z);
 		}
 
 		if(direction != 0f) 
@@ -70,14 +77,13 @@ public class PlayerController : MonoBehaviour {
 		{
 			rB.velocity = new Vector2(maxRunSpeed * direction, rB.velocity.y);
 		}
-
-        myAnim.SetFloat("Direction", direction);
         
 	}
 
     void HandleJumping()
     {
-        rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed);
+        myAnim.SetBool("Jumping", true);
+        rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed); 
     }
 
 
