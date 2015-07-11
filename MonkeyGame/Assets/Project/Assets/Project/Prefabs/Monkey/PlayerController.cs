@@ -6,16 +6,31 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private float maxRunSpeed = 6.0f;
     [SerializeField] private float runAccel = 0.5f;
-    [SerializeField] private float jumpAccel = 0.3f;
+    //[SerializeField] private float jumpAccel = 0.3f; //Will use this if we decide to have an extended jump
     [SerializeField] private float initJumpSpeed = 3.0f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform throwSpot;
+    [SerializeField] float groundCheckRad = 0.2f;
+    [SerializeField] LayerMask walkableLayer;
+    [SerializeField] GameObject banana;
 
-    private bool myDirection = true; //Determines players facing direction so the sprite matches. true = right(May not use this)
     private bool canJump = true;
     private bool onGround = false;
-    private float timeHoldingInput = 0.0f;
+    private bool myDir = false;
 
-    private Animator myAnim;
+    public bool MyDir
+    {
+        get { return myDir; }
+    }
+    private float throwDelay = 0.5f;
+    private float throwTimer = 0f;
+    //private float timeHoldingInput = 0.0f; //Will use this if we decide to have an extended jump
+
+    private Animator myAnim; // access animator component
     private Rigidbody2D rB; // used to access the rigidbody component
+
+
+    //----------------------------------------Start and Update--------------------------------------------------------------
 
 	// Use this for initialization
 	void Start ()
@@ -30,32 +45,61 @@ public class PlayerController : MonoBehaviour {
     {
         MovementControl();
 	}
+    //--------------------------------------------Movement Control----------------------------------------------------------
 
-    void MovementControl()
+    //Handles all the movement for the monkey
+    private void MovementControl()
 	{
-        if (Input.GetButtonDown("Jump"))
-        {
-            HandleJumping();
-        }
+        //increases the throw timer
+        throwTimer += Time.deltaTime;
+        //Checks if player is on the ground
+        CheckForGround();
+        //------Jump Stuff-----------//
 
-        if (Input.GetButtonUp("Jump"))
+        //if they are then we should not play the jump animation
+        if (onGround)
         {
             myAnim.SetBool("Jumping", false);
         }
+        else
+        {
+            myAnim.SetBool("Jumping", true);
+        }
 
-		float direction = Input.GetAxis("Horizontal"); //The float value of the horizontal input
+        //Checks if Jump was pressed
+        if (Input.GetButtonDown("Jump"))
+        {
+            if(canJump)
+            {
+                HandleJumping();
+            }
+        }
+
+        //------Throw Stuff-----------//
+
+        if(Input.GetButton("Fire1"))
+        {
+            if (throwTimer >= throwDelay)
+            {
+                HandleThrow();
+            }
+        }
+
+        //------Movement Stuff-----------//
+
+		float direction = Input.GetAxis("Horizontal"); //The float value of the horizontal input; -1 = left, 0 = idle, 1 = right
 		
 		Vector2 accel = new Vector2(runAccel * direction, 0); //The acceleration of the players movement
 
 		if(direction > 0) //If true, player is moving right
 		{
-			myDirection = true;
             transform.localScale = new Vector3(-5, transform.localScale.y, transform.localScale.z);
+            myDir = true;
 		}
 		else if(direction < 0) //if true, player is moving left
 		{
-			myDirection = false;
             transform.localScale = new Vector3(5, transform.localScale.y, transform.localScale.z);
+            myDir = false;
 		}
 
 		if(direction != 0f) 
@@ -81,11 +125,36 @@ public class PlayerController : MonoBehaviour {
         
 	}
 
-    void HandleJumping()
+    //-----------------------------------------Jumping-------------------------------------------------------------
+
+   private void HandleJumping()
     {
-        myAnim.SetBool("Jumping", true);
+       // myAnim.SetBool("Jumping", true);
         rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed); 
     }
+
+    //------------------------------------------Check Ground------------------------------------------------------------
+
+    private void CheckForGround()
+    {
+        onGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRad, walkableLayer);
+
+        if(onGround)
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }
+    }
+
+    private void HandleThrow()
+    {
+        Instantiate(banana, throwSpot.transform.position, transform.rotation);
+        throwTimer = 0f;
+    }
+
 
 
 }
