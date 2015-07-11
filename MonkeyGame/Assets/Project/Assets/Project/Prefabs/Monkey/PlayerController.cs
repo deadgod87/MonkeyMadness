@@ -8,13 +8,16 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float runAccel = 0.5f;
     [SerializeField] private float jumpAccel = 0.3f;
     [SerializeField] private float initJumpSpeed = 3.0f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] float groundCheckRad = 0.2f;
+    [SerializeField] LayerMask walkableLayer;
 
     private bool myDirection = true; //Determines players facing direction so the sprite matches. true = right(May not use this)
     private bool canJump = true;
     private bool onGround = false;
     private float timeHoldingInput = 0.0f;
 
-    private Animator myAnim;
+    private Animator myAnim; // access animator component
     private Rigidbody2D rB; // used to access the rigidbody component
 
 	// Use this for initialization
@@ -31,17 +34,31 @@ public class PlayerController : MonoBehaviour {
         MovementControl();
 	}
 
-    void MovementControl()
+    //Handles all the movement for the monkey
+    private void MovementControl()
 	{
-        if (Input.GetButtonDown("Jump"))
-        {
-            HandleJumping();
-        }
-
-        if (Input.GetButtonUp("Jump"))
+        //Checks if player is on the ground
+        CheckForGround();
+        //if they are then we should not play the jump animation
+        if (onGround)
         {
             myAnim.SetBool("Jumping", false);
         }
+        else
+        {
+            myAnim.SetBool("Jumping", true);
+        }
+
+        //Checks if Jump was pressed
+        if (Input.GetButtonDown("Jump"))
+        {
+            if(canJump)
+            {
+                HandleJumping();
+            }
+        }
+
+      
 
 		float direction = Input.GetAxis("Horizontal"); //The float value of the horizontal input
 		
@@ -81,11 +98,26 @@ public class PlayerController : MonoBehaviour {
         
 	}
 
-    void HandleJumping()
+   private void HandleJumping()
     {
-        myAnim.SetBool("Jumping", true);
+       // myAnim.SetBool("Jumping", true);
         rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed); 
     }
+
+    private void CheckForGround()
+    {
+        onGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRad, walkableLayer);
+
+        if(onGround)
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }
+    }
+
 
 
 }
