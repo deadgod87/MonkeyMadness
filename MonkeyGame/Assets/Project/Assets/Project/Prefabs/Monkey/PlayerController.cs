@@ -9,11 +9,21 @@ public class PlayerController : MonoBehaviour {
     //[SerializeField] private float jumpAccel = 0.3f; //Will use this if we decide to have an extended jump
     [SerializeField] private float initJumpSpeed = 3.0f;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform throwSpot;
     [SerializeField] float groundCheckRad = 0.2f;
     [SerializeField] LayerMask walkableLayer;
+    [SerializeField] GameObject banana;
 
     private bool canJump = true;
     private bool onGround = false;
+    private bool myDir = false;
+
+    public bool MyDir
+    {
+        get { return myDir; }
+    }
+    private float throwDelay = 0.5f;
+    private float throwTimer = 0f;
     //private float timeHoldingInput = 0.0f; //Will use this if we decide to have an extended jump
 
     private Animator myAnim; // access animator component
@@ -40,8 +50,12 @@ public class PlayerController : MonoBehaviour {
     //Handles all the movement for the monkey
     private void MovementControl()
 	{
+        //increases the throw timer
+        throwTimer += Time.deltaTime;
         //Checks if player is on the ground
         CheckForGround();
+        //------Jump Stuff-----------//
+
         //if they are then we should not play the jump animation
         if (onGround)
         {
@@ -61,6 +75,17 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        //------Throw Stuff-----------//
+
+        if(Input.GetButton("Fire1"))
+        {
+            if (throwTimer >= throwDelay)
+            {
+                HandleThrow();
+            }
+        }
+
+        //------Movement Stuff-----------//
 
 		float direction = Input.GetAxis("Horizontal"); //The float value of the horizontal input; -1 = left, 0 = idle, 1 = right
 		
@@ -69,10 +94,12 @@ public class PlayerController : MonoBehaviour {
 		if(direction > 0) //If true, player is moving right
 		{
             transform.localScale = new Vector3(-5, transform.localScale.y, transform.localScale.z);
+            myDir = true;
 		}
 		else if(direction < 0) //if true, player is moving left
 		{
             transform.localScale = new Vector3(5, transform.localScale.y, transform.localScale.z);
+            myDir = false;
 		}
 
 		if(direction != 0f) 
@@ -120,6 +147,12 @@ public class PlayerController : MonoBehaviour {
         {
             canJump = false;
         }
+    }
+
+    private void HandleThrow()
+    {
+        Instantiate(banana, throwSpot.transform.position, transform.rotation);
+        throwTimer = 0f;
     }
 
 
