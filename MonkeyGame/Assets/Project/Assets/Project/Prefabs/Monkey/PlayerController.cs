@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleThrow()
     {
-        Instantiate(banana, throwSpot.transform.position, transform.rotation);
+        Instantiate(banana, throwSpot.transform.position, banana.transform.rotation);
         throwTimer = 0f;
     }
 
