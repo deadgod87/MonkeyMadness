@@ -29,7 +29,7 @@ public class MischiefMeter : MonoBehaviour {
 	void Update () 
     {
         GetComponent<Image>().fillAmount = progress;
-        progressText.text = "" + (int)Mathf.Ceil(progress * 100) + "%";
+        progressText.text = "" + (int)Mathf.Floor(progress * 100) + "%";
 
        // Debug.Log("Progress = " + progress);
        // Debug.Log("MaxProgress = " + maxProgress);
