@@ -52,9 +52,9 @@
      <Compile Include="Assets\Project\Prefabs\LevelDesignPieces\WalkableAreas\SoftPlatform.cs" />
      <Compile Include="Assets\Project\Prefabs\MischiefMeterPanel\MischiefMeter.cs" />
      <Compile Include="Assets\Project\Prefabs\Monkey\PlayerController.cs" />
+     <Compile Include="Assets\Project\Prefabs\ScoreHandler\ScoreHandler.cs" />
      <Compile Include="Assets\Project\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Project\Scripts\MenuScript.cs" />
-     <Compile Include="Assets\Project\Scripts\ScoreHandler.cs" />
      <None Include="Assets\Project\Materials\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
      <None Include="Assets\Project\Materials\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
  <Reference Include="UnityEngine.UI">
