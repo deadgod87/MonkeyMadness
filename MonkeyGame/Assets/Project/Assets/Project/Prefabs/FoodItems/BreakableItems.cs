@@ -14,9 +14,14 @@ public class BreakableItems : MonoBehaviour {
     private bool used = false;
     private float destroyTime = 2.5f;
 
+    private MischiefMeter meterBar;
+    private GameObject meter;
+
 	// Use this for initialization
 	void Start () 
     {
+        meter = GameObject.Find("ProgressBar");
+        meterBar = meter.GetComponent<MischiefMeter>();
         rB = GetComponent<Rigidbody2D>();
         mySprite = GetComponent<SpriteRenderer>();
         spriteId = UnityEngine.Random.Range(0, foodSprites.Length);
@@ -45,6 +50,7 @@ public class BreakableItems : MonoBehaviour {
         if (!used)
         {
             Debug.Log("You scored some points!");
+            meterBar.AddProgress();
           //This is where we would update the score for items
         }
         

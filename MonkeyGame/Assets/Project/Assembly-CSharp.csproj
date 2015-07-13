@@ -50,6 +50,7 @@
      <Compile Include="Assets\Project\Prefabs\Banana\Banana.cs" />
      <Compile Include="Assets\Project\Prefabs\FoodItems\BreakableItems.cs" />
      <Compile Include="Assets\Project\Prefabs\LevelDesignPieces\WalkableAreas\SoftPlatform.cs" />
+     <Compile Include="Assets\Project\Prefabs\MischiefMeterPanel\MischiefMeter.cs" />
      <Compile Include="Assets\Project\Prefabs\Monkey\PlayerController.cs" />
      <Compile Include="Assets\Project\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Project\Scripts\MenuScript.cs" />
