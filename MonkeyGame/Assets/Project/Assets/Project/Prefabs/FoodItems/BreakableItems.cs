@@ -18,6 +18,13 @@ public class BreakableItems : MonoBehaviour {
 
     private int playerScore = 10;
     private int bananaScore = 5;
+    private static int scoreMultiplier = 1;
+
+    public static int ScoreMultiplier
+    {
+        get { return BreakableItems.scoreMultiplier; }
+        set { BreakableItems.scoreMultiplier = value; }
+    }
 
     private MischiefMeter meterBar;
     private GameObject meter;
@@ -40,7 +47,8 @@ public class BreakableItems : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-	
+        playerScore = 10 * scoreMultiplier;
+        bananaScore = 5 * scoreMultiplier;
 	}
 
     void OnTriggerEnter2D(Collider2D col)
