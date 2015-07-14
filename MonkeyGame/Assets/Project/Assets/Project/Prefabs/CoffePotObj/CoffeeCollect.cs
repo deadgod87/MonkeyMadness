@@ -9,7 +9,7 @@ public class CoffeeCollect : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        coffeeMeterObj = GameObject.Find("Coffee");
+        coffeeMeterObj = GameObject.Find("CoffeeImage");
         coffeeMeter = coffeeMeterObj.GetComponent<CoffeeeMeter>();
 	}
 	

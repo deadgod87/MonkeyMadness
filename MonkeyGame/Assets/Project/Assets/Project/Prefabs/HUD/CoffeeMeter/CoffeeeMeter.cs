@@ -8,12 +8,14 @@ public class CoffeeeMeter : MonoBehaviour {
     private float meterProgress = 0;
     private float deceraseSpeed = 10.0f;
     private float multiplierTimer = 0f;
+    private float multiplierTimeHoldingVar;
     [SerializeField] private float multiplierTime = 5.0f;
     [SerializeField] private Text scoreText1;
     [SerializeField] private Text scoreText2;
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+    {
+        multiplierTimeHoldingVar = multiplierTime;
 	}
 	
 	// Update is called once per frame
@@ -39,6 +41,7 @@ public class CoffeeeMeter : MonoBehaviour {
             {
                 meterProgress = 0;
                 multiplierTimer = 0;
+                multiplierTime = multiplierTimeHoldingVar;
                 BreakableItems.ScoreMultiplier = 1;
                 progress = 0;
             }
