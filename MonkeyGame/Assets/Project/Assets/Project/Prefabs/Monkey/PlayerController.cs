@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] LayerMask walkableLayer;
     [SerializeField] GameObject banana;
 
-    private bool canJump = true;
-    private bool hasJumped = false;
-    private bool onGround = false;
+    [SerializeField]private bool canJump = true;
+    [SerializeField]private bool hasJumped = false;
+    [SerializeField]private bool onGround = false;
     private bool myDir = false;
 
     public bool MyDir
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
     }
     private float throwDelay = 0.5f;
     private float throwTimer = 0f;
-    private float timeHoldingInput = 0.0f; //Will use this if we decide to have an extended jump
+    [SerializeField]private float timeHoldingInput = 0.0f; //Will use this if we decide to have an extended jump
 
     private Animator myAnim; // access animator component
     private Rigidbody2D rB; // used to access the rigidbody component
@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
     {
         MovementControl();
+
+        Debug.Log("CanJump = " + canJump);
+        Debug.Log("HasJumped = " + hasJumped);
 	}
     //--------------------------------------------Movement Control----------------------------------------------------------
 
@@ -63,25 +66,31 @@ public class PlayerController : MonoBehaviour {
         {
             myAnim.SetBool("Jumping", false);
             timeHoldingInput = 0f;
+
+            if (Input.GetButton("Jump"))
+            {
+                if(canJump)
+                {
+                    HandleJumping();
+                }
+            }
         }
         else
         {
+            canJump = false;
             myAnim.SetBool("Jumping", true);
-        }
-
-        //Checks if Jump was pressed
-        if (Input.GetButtonDown("Jump"))
-        {
-            if(canJump)
+            if (hasJumped)
             {
-                HandleJumping();
                 HandleJumpAccel();
             }
         }
+
         if(Input.GetButtonUp("Jump"))
         {
             canJump = false;
+            hasJumped = false;
         }
+
 
         //------Throw Stuff-----------//
 
@@ -137,13 +146,13 @@ public class PlayerController : MonoBehaviour {
 
    private void HandleJumping()
     {
-       // myAnim.SetBool("Jumping", true);
-        rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed); 
+        rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed);
+        hasJumped = true;
     }
 
     private void HandleJumpAccel()
    {
-       if (timeHoldingInput < maxJumpBtnHoldTime && Input.GetKey(KeyCode.Space))
+       if (timeHoldingInput < maxJumpBtnHoldTime)
        {
            timeHoldingInput += Time.deltaTime;
            rB.velocity += new Vector2(0, jumpAccel);
@@ -156,13 +165,9 @@ public class PlayerController : MonoBehaviour {
     {
         onGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRad, walkableLayer);
 
-        if(onGround)
+        if(onGround && !hasJumped)
         {
             canJump = true;
-        }
-        else
-        {
-            canJump = false;
         }
     }
 
