@@ -8,12 +8,16 @@ public class ChefController : MonoBehaviour {
 	// State Machine 
 	// Use distance to player 
 	Transform player;
+
+	private Animator anim;
 	
 	public float moveSpeed = 3.0f;
 	
 	// Use this for initialization
 	void Start () 
 	{
+		anim = GetComponent<Animator>();
+
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 
 	}
@@ -33,5 +37,15 @@ public class ChefController : MonoBehaviour {
         {
             transform.localScale = new Vector3(-10, 10, 10);
         }
+
+
+		/*if(player Distance is <= 2.5f)
+		{
+			myAnim.SetBool("Attack", true);
+		}
+		else
+		{
+			myAnim.SetBool("Attack", false);
+		}*/
 	}
 }
