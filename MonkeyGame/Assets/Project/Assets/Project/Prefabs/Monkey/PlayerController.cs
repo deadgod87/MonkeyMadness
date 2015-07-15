@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private float maxRunSpeed = 6.0f;
     [SerializeField] private float runAccel = 0.5f;
-    //[SerializeField] private float jumpAccel = 0.3f; //Will use this if we decide to have an extended jump
+    [SerializeField] private float jumpAccel = 0.3f; //Will use this if we decide to have an extended jump
+    [SerializeField] private float maxJumpBtnHoldTime = 1.0f;
     [SerializeField] private float initJumpSpeed = 3.0f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform throwSpot;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] GameObject banana;
 
     private bool canJump = true;
+    private bool hasJumped = false;
     private bool onGround = false;
     private bool myDir = false;
 
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour {
     }
     private float throwDelay = 0.5f;
     private float throwTimer = 0f;
-    //private float timeHoldingInput = 0.0f; //Will use this if we decide to have an extended jump
+    private float timeHoldingInput = 0.0f; //Will use this if we decide to have an extended jump
 
     private Animator myAnim; // access animator component
     private Rigidbody2D rB; // used to access the rigidbody component
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour {
         if (onGround)
         {
             myAnim.SetBool("Jumping", false);
+            timeHoldingInput = 0f;
         }
         else
         {
@@ -72,7 +75,12 @@ public class PlayerController : MonoBehaviour {
             if(canJump)
             {
                 HandleJumping();
+                HandleJumpAccel();
             }
+        }
+        if(Input.GetButtonUp("Jump"))
+        {
+            canJump = false;
         }
 
         //------Throw Stuff-----------//
@@ -132,6 +140,15 @@ public class PlayerController : MonoBehaviour {
        // myAnim.SetBool("Jumping", true);
         rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed); 
     }
+
+    private void HandleJumpAccel()
+   {
+       if (timeHoldingInput < maxJumpBtnHoldTime && Input.GetKey(KeyCode.Space))
+       {
+           timeHoldingInput += Time.deltaTime;
+           rB.velocity += new Vector2(0, jumpAccel);
+       }
+   }
 
     //------------------------------------------Check Ground------------------------------------------------------------
 
