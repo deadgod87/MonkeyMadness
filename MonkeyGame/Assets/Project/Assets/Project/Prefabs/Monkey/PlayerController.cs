@@ -47,8 +47,8 @@ public class PlayerController : MonoBehaviour {
     {
         MovementControl();
 
-        Debug.Log("CanJump = " + canJump);
-        Debug.Log("HasJumped = " + hasJumped);
+        //Debug.Log("CanJump = " + canJump);
+        //Debug.Log("HasJumped = " + hasJumped);
 	}
     //--------------------------------------------Movement Control----------------------------------------------------------
 

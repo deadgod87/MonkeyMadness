@@ -11,13 +11,15 @@ public class ChefController : MonoBehaviour {
 
 	private Animator anim;
 	
-	public float moveSpeed = 3.0f;
-	
+	[SerializeField] private float moveSpeed = 3.0f;
+
+	private float myY;
+
 	// Use this for initialization
 	void Start () 
 	{
+		myY = transform.position.y;
 		anim = GetComponent<Animator>();
-
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 
 	}
@@ -26,16 +28,20 @@ public class ChefController : MonoBehaviour {
 	
 	void Update()
 	{
-		
-		transform.position += (player.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
+	
+		PlayerDist ();
+
+
 		
         if(player.transform.position.x > transform.position.x)
         {
             transform.localScale = new Vector3(10, 10, 10);
+			transform.position += transform.right * moveSpeed * Time.deltaTime;
         }
         else
         {
             transform.localScale = new Vector3(-10, 10, 10);
+			transform.position -= transform.right * moveSpeed * Time.deltaTime;
         }
 
 	}
@@ -44,13 +50,18 @@ public class ChefController : MonoBehaviour {
 	{
 		float dist = Vector3.Distance(player.position, transform.position);
 		
-		if(Vector3.Distance(player.position, transform.position) <= 2.5)
+		if(dist <= 2.5)
 		{
 			anim.SetBool("Attack", true);
 		}
 		else
 		{
-			anim.SetBool("Running", true);
+			anim.SetBool("Attack", false);
 		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+
 	}
 }
