@@ -2,34 +2,38 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class CoffeeeMeter : MonoBehaviour {
+public class CoffeeMeter : MonoBehaviour
+{
 
     private float progress = 0;
     private float meterProgress = 0;
     private float deceraseSpeed = 10.0f;
     private float multiplierTimer = 0f;
     private float multiplierTimeHoldingVar;
-    [SerializeField] private float multiplierTime = 5.0f;
-    [SerializeField] private Text scoreText1;
-    [SerializeField] private Text scoreText2;
-	// Use this for initialization
-	void Start () 
+    [SerializeField]
+    private float multiplierTime = 5.0f;
+    [SerializeField]
+    private Text scoreText1;
+    [SerializeField]
+    private Text scoreText2;
+    // Use this for initialization
+    void Start()
     {
         multiplierTimeHoldingVar = multiplierTime;
-	}
-	
-	// Update is called once per frame
-	void Update () 
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         GetComponent<Image>().fillAmount = meterProgress;
         scoreText1.text = "" + BreakableItems.ScoreMultiplier;
         scoreText2.text = "" + BreakableItems.ScoreMultiplier;
         //Debug.Log(BreakableItems.ScoreMultiplier);
 
-	    if(progress >= 1)
+        if (progress >= 1)
         {
             multiplierTimer += Time.deltaTime;
-            meterProgress -= Time.deltaTime/deceraseSpeed;
+            meterProgress -= Time.deltaTime / deceraseSpeed;
 
             if (multiplierTimer >= multiplierTime)
             {
@@ -37,7 +41,7 @@ public class CoffeeeMeter : MonoBehaviour {
                 multiplierTimer = 0;
             }
 
-            if(meterProgress <= 0)
+            if (meterProgress <= 0)
             {
                 meterProgress = 0;
                 multiplierTimer = 0;
@@ -46,11 +50,11 @@ public class CoffeeeMeter : MonoBehaviour {
                 progress = 0;
             }
         }
-	}
+    }
 
     public void AddProgress()
     {
-        if(progress < 1)
+        if (progress < 1)
         {
             progress += 0.25f;
             meterProgress = progress;
@@ -60,7 +64,5 @@ public class CoffeeeMeter : MonoBehaviour {
             multiplierTime = multiplierTime * 0.75f;
             BreakableItems.ScoreMultiplier += 1;
         }
-       
-        
     }
 }

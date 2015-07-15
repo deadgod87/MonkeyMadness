@@ -38,14 +38,19 @@ public class ChefController : MonoBehaviour {
             transform.localScale = new Vector3(-10, 10, 10);
         }
 
+	}
 
-		/*if(player Distance is <= 2.5f)
+	void PlayerDist()
+	{
+		float dist = Vector3.Distance(player.position, transform.position);
+		
+		if(Vector3.Distance(player.position, transform.position) <= 2.5)
 		{
-			myAnim.SetBool("Attack", true);
+			anim.SetBool("Attack", true);
 		}
 		else
 		{
-			myAnim.SetBool("Attack", false);
-		}*/
+			anim.SetBool("Running", true);
+		}
 	}
 }

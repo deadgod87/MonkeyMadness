@@ -4,13 +4,13 @@ using System.Collections;
 public class CoffeeCollect : MonoBehaviour {
 
     private GameObject coffeeMeterObj;
-    private CoffeeeMeter coffeeMeter;
+    private CoffeeMeter coffeeMeter;
 
 	// Use this for initialization
 	void Start () 
     {
         coffeeMeterObj = GameObject.Find("CoffeeImage");
-        coffeeMeter = coffeeMeterObj.GetComponent<CoffeeeMeter>();
+        coffeeMeter = coffeeMeterObj.GetComponent<CoffeeMeter>();
 	}
 	
 	// Update is called once per frame
