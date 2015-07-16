@@ -58,6 +58,7 @@
      <Compile Include="Assets\Project\Prefabs\Monkey\PlayerController.cs" />
      <Compile Include="Assets\Project\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Project\Scripts\ChefController.cs" />
+     <Compile Include="Assets\Project\Scripts\EnemyActivate.cs" />
      <Compile Include="Assets\Project\Scripts\MenuScript.cs" />
      <None Include="Assets\Project\Materials\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
      <None Include="Assets\Project\Materials\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />

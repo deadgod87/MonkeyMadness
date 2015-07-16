@@ -10,6 +10,8 @@ public class ChefController : MonoBehaviour {
 	Transform player;
 
 	private Animator anim;
+
+	private bool isActive = false; 
 	
 	[SerializeField] private float moveSpeed = 3.0f;
 
@@ -29,20 +31,23 @@ public class ChefController : MonoBehaviour {
 	void Update()
 	{
 	
-		PlayerDist ();
+		if (isActive)
+		{
+			anim.SetBool("IsActive", true);
 
+			PlayerDist ();
 
-		
-        if(player.transform.position.x > transform.position.x)
-        {
-            transform.localScale = new Vector3(10, 10, 10);
-			transform.position += transform.right * moveSpeed * Time.deltaTime;
-        }
-        else
-        {
-            transform.localScale = new Vector3(-10, 10, 10);
-			transform.position -= transform.right * moveSpeed * Time.deltaTime;
-        }
+	        if(player.transform.position.x > transform.position.x)
+    	    {
+           	 	transform.localScale = new Vector3(10, 10, 10);
+				transform.position += transform.right * moveSpeed * Time.deltaTime;
+        	}
+        	else
+        	{
+            	transform.localScale = new Vector3(-10, 10, 10);
+				transform.position -= transform.right * moveSpeed * Time.deltaTime;
+    	    }
+		}
 
 	}
 
@@ -63,5 +68,14 @@ public class ChefController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 
+	}
+
+	public bool IsActive {
+		get {
+			return isActive;
+		}
+		set {
+			isActive = value;
+		}
 	}
 }

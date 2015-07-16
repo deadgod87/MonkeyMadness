@@ -10,7 +10,9 @@ public class MenuScript : MonoBehaviour {
 	public Canvas quitMenu;
 	public Button startTxt;
 	public Button exitTxt;
+	[SerializeField]private GameObject instructionPanel;
 
+	bool instActive = false;
 
 	// Use this for initialization
 	void Start () 
@@ -19,6 +21,7 @@ public class MenuScript : MonoBehaviour {
 		startTxt = startTxt.GetComponent<Button> ();
 		exitTxt = exitTxt.GetComponent<Button> ();
 		quitMenu.enabled = false;
+		instructionPanel.SetActive (false);
 	}
 
 	public void ExitInput()
@@ -34,6 +37,20 @@ public class MenuScript : MonoBehaviour {
 		quitMenu.enabled = false;
 		startTxt.enabled = true;
 		exitTxt.enabled = true;
+	}
+
+	public void InstructionsScreen()
+	{
+		if(instActive)
+		{
+			instructionPanel.SetActive(false);
+			instActive = false;
+		}
+		else
+		{
+			instructionPanel.SetActive(true);
+			instActive = true;
+		}
 	}
 
 	public void LoadLevel()
