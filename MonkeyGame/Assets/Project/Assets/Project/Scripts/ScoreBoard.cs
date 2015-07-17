@@ -15,12 +15,18 @@ public class ScoreBoard : MonoBehaviour {
 	[SerializeField]private GameObject scoreboardPanel;
 
 	[SerializeField] private Text scoreText;
-	
+
+	[SerializeField] private AudioClip pressSFX;
+	[SerializeField] private AudioClip enterSFX;
+
+	private AudioSource myAudio;
+
 	private int totalScore = 0;
 	
 
 	void Start () 
 	{
+		myAudio = GetComponent<AudioSource> ();
 		scoreBoard = scoreBoard.GetComponent<Canvas> ();
 		continueTxt = continueTxt.GetComponent<Button> ();
 
@@ -40,7 +46,7 @@ public class ScoreBoard : MonoBehaviour {
 		scoreText.text = "" + totalScore;
 	}
 	
-	public void ContinueInput()
+	/*public void ContinueInput()
 	{
 		scoreBoard.enabled = true;
 		continueTxt.enabled = false;
@@ -59,15 +65,19 @@ public class ScoreBoard : MonoBehaviour {
 			scoreboardPanel.SetActive(true);
 			scoreBoardActive = true;
 		}
-	}
+	}*/
 	
 	public void LoadLevel()
 	{
+		myAudio.PlayOneShot (pressSFX);
         Time.timeScale = 1;
 		Application.LoadLevel (0);
 	}
 
-
-	
+	public void MouseEnter()
+	{
+		myAudio.PlayOneShot (enterSFX);
+	}
+		
 }
 

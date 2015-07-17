@@ -8,6 +8,10 @@ public class BreakableItems : MonoBehaviour {
 
     [SerializeField] private Sprite[] foodSprites;
 
+	[SerializeField] private AudioClip itemSFX;
+
+	private AudioSource myAudio;
+
     private Rigidbody2D rB;
     private SpriteRenderer mySprite;
     private int spriteId;
@@ -34,6 +38,7 @@ public class BreakableItems : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+		myAudio = GetComponent<AudioSource> ();
         gameController = GameObject.Find("GameController");
         myScore = gameController.GetComponent<ScoreHandler>();
         meter = GameObject.Find("ProgressBar");
@@ -53,9 +58,10 @@ public class BreakableItems : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
+	
         if(col.tag == "Player")
         {
-            rB.isKinematic = false;
+			rB.isKinematic = false;
             AddScore(playerScore);
             used = true;
             Destroy(gameObject, destroyTime);
@@ -74,7 +80,8 @@ public class BreakableItems : MonoBehaviour {
     {
         if (!used)
         {
-            Debug.Log("You scored some points!");
+			myAudio.PlayOneShot(itemSFX);
+            //Debug.Log("You scored some points!");
             meterBar.AddProgress();
             myScore.UpdateScore(score);
         }
