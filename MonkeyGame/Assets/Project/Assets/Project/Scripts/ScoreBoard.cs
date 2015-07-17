@@ -24,13 +24,18 @@ public class ScoreBoard : MonoBehaviour {
 		scoreBoard = scoreBoard.GetComponent<Canvas> ();
 		continueTxt = continueTxt.GetComponent<Button> ();
 
-		scoreBoard.enabled = false;
-		scoreboardPanel.SetActive (false);
+		//scoreBoard.enabled = false;
+		//scoreboardPanel.SetActive (false);
 	}
 
-	public void UpdateScore(int score)
+	void Update()
 	{
-		totalScore += score;
+		UpdateScore ();
+	}
+
+	public void UpdateScore()
+	{
+		totalScore = GetComponent<ScoreHandler>().TotalScore;
 		
 		scoreText.text = "" + totalScore;
 	}

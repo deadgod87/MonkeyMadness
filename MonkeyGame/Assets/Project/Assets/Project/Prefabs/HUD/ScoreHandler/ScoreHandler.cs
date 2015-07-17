@@ -9,6 +9,12 @@ public class ScoreHandler : MonoBehaviour {
 
     private int totalScore = 0;
 
+	public int TotalScore {
+		get {
+			return totalScore;
+		}
+	}
+
     public void UpdateScore(int score)
     {
         totalScore += score;
