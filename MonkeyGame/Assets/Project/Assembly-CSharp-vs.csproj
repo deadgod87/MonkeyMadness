@@ -46,12 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraScript.cs" />
-     <Compile Include="Assets\CoffeeMeter.cs" />
-     <Compile Include="Assets\ExitDoor.cs" />
-     <Compile Include="Assets\LevelExit.cs" />
-     <Compile Include="Assets\LevelTimer.cs" />
-     <Compile Include="Assets\PlatformDropTrigger.cs" />
      <Compile Include="Assets\Project\Materials\Fonts\Script\scriptTexttest.cs" />
      <Compile Include="Assets\Project\Prefabs\Banana\Banana.cs" />
      <Compile Include="Assets\Project\Prefabs\CoffePotObj\CoffeeCollect.cs" />
@@ -61,9 +55,15 @@
      <Compile Include="Assets\Project\Prefabs\LevelDesignPieces\WalkableAreas\SoftPlatform.cs" />
      <Compile Include="Assets\Project\Prefabs\Monkey\PlayerController.cs" />
      <Compile Include="Assets\Project\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Project\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Project\Scripts\ChefController.cs" />
+     <Compile Include="Assets\Project\Scripts\CoffeeMeter.cs" />
      <Compile Include="Assets\Project\Scripts\EnemyActivate.cs" />
+     <Compile Include="Assets\Project\Scripts\ExitDoor.cs" />
+     <Compile Include="Assets\Project\Scripts\LevelExit.cs" />
+     <Compile Include="Assets\Project\Scripts\LevelTimer.cs" />
      <Compile Include="Assets\Project\Scripts\MenuScript.cs" />
+     <Compile Include="Assets\Project\Scripts\PlatformDropTrigger.cs" />
      <Compile Include="Assets\Project\Scripts\ScoreBoard.cs" />
      <None Include="Assets\Project\Materials\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
      <None Include="Assets\Project\Materials\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
