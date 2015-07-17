@@ -19,7 +19,9 @@ public class ChefController : MonoBehaviour {
 	private Animator anim;
 
 	private bool isActive = false; 
-	
+
+	private bool isAttacking = false;
+
 	[SerializeField] private float moveSpeed = 3.0f;
 
 	private float myY;
@@ -62,24 +64,29 @@ public class ChefController : MonoBehaviour {
 	{
 		float dist = Vector3.Distance(player.position, transform.position);
 		
-		if(dist <= 2.5)
+		if(dist <= 5.0)
 		{
 			anim.SetBool("Attack", true);
+			isAttacking = true;
 		}
 		else
 		{
 			anim.SetBool("Attack", false);
+			isAttacking = false;
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D other)
+	void OnTriggerStay2D(Collider2D other)
 	{
         if(other.tag == "Player")
-        {
-            //player.GetComponent<PlayerController>().IsAlive = false;
-            Time.timeScale = 0;
-            scoreBoard.SetActive(true);
-        }
+		{
+			if(isAttacking)
+        	{
+            	//player.GetComponent<PlayerController>().IsAlive = false;
+            	Time.timeScale = 0;
+            	scoreBoard.SetActive(true);
+        	}
+		}
 	}
 
 	public bool IsActive {
