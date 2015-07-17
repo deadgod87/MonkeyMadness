@@ -5,10 +5,16 @@ public class CoffeeCollect : MonoBehaviour {
 
     private GameObject coffeeMeterObj;
     private CoffeeMeter coffeeMeter;
+    [SerializeField]
+    private AudioClip coffeeCollectSFX;
 
+    private Renderer myRend;
+    private AudioSource myAudio;
 	// Use this for initialization
 	void Start () 
     {
+        myRend = GetComponent<Renderer>();
+        myAudio = GetComponent<AudioSource>();
         coffeeMeterObj = GameObject.Find("CoffeeImage");
         coffeeMeter = coffeeMeterObj.GetComponent<CoffeeMeter>();
 	}
@@ -22,8 +28,10 @@ public class CoffeeCollect : MonoBehaviour {
     {
         if(col.tag == "Player")
         {
+            myAudio.PlayOneShot(coffeeCollectSFX);
             coffeeMeter.AddProgress();
-            Destroy(gameObject);
+            myRend.enabled = false;
+            Destroy(gameObject, coffeeCollectSFX.length);
         }
     }
 }

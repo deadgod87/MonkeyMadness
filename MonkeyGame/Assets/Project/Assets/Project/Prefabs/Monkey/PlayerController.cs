@@ -20,6 +20,14 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]private bool onGround = false;
     private bool myDir = false;
 
+    private bool isAlive = true;
+
+    public bool IsAlive
+    {
+        get { return isAlive; }
+        set { isAlive = value; }
+    }
+
     public bool MyDir
     {
         get { return myDir; }
@@ -45,7 +53,10 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        MovementControl();
+        if(isAlive)
+        {
+            MovementControl();
+        } 
 
         //Debug.Log("CanJump = " + canJump);
         //Debug.Log("HasJumped = " + hasJumped);

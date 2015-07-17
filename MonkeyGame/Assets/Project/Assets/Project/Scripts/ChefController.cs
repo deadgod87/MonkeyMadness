@@ -13,6 +13,9 @@ public class ChefController : MonoBehaviour {
 	// Use distance to player 
 	Transform player;
 
+    [SerializeField]
+    private GameObject scoreBoard;
+
 	private Animator anim;
 
 	private bool isActive = false; 
@@ -71,7 +74,12 @@ public class ChefController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-
+        if(other.tag == "Player")
+        {
+            //player.GetComponent<PlayerController>().IsAlive = false;
+            Time.timeScale = 0;
+            scoreBoard.SetActive(true);
+        }
 	}
 
 	public bool IsActive {
