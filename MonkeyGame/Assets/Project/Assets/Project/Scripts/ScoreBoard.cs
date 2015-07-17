@@ -25,7 +25,7 @@ public class ScoreBoard : MonoBehaviour {
 		continueTxt = continueTxt.GetComponent<Button> ();
 
 		//scoreBoard.enabled = false;
-		//scoreboardPanel.SetActive (false);
+		scoreboardPanel.SetActive (false);
 	}
 
 	void Update()
@@ -63,6 +63,7 @@ public class ScoreBoard : MonoBehaviour {
 	
 	public void LoadLevel()
 	{
+        Time.timeScale = 1;
 		Application.LoadLevel (0);
 	}
 

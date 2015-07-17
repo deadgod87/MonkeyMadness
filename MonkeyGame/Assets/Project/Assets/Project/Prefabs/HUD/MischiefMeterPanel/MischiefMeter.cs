@@ -45,4 +45,17 @@ public class MischiefMeter : MonoBehaviour {
             myAnim.SetBool("IsFull", true);
         }
     }
+
+
+    public float Progress
+    {
+        get { return progress; }
+        set { progress = value; }
+    }
+
+    public float PassedProgress
+    {
+        get { return passedProgress; }
+        set { passedProgress = value; }
+    }
 }
