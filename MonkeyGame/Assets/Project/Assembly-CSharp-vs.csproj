@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\PointTextControl.cs" />
      <Compile Include="Assets\Project\Materials\Fonts\Script\scriptTexttest.cs" />
      <Compile Include="Assets\Project\Prefabs\Banana\Banana.cs" />
      <Compile Include="Assets\Project\Prefabs\CoffePotObj\CoffeeCollect.cs" />
