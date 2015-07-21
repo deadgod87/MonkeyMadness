@@ -22,14 +22,17 @@ public class ScoreBoard : MonoBehaviour {
 	private AudioSource myAudio;
 
 	private int totalScore = 0;
-	
+
+    private CoffeeMeter meter;
+    private ScoreHandler score;
 
 	void Start () 
 	{
 		myAudio = GetComponent<AudioSource> ();
 		scoreBoard = scoreBoard.GetComponent<Canvas> ();
 		continueTxt = continueTxt.GetComponent<Button> ();
-
+        meter = GameObject.Find("CoffeeImage").GetComponent<CoffeeMeter>();
+        score = GameObject.Find("GameController").GetComponent<ScoreHandler>();
 		//scoreBoard.enabled = false;
 		scoreboardPanel.SetActive (false);
 	}
@@ -71,6 +74,8 @@ public class ScoreBoard : MonoBehaviour {
 	{
 		myAudio.PlayOneShot (pressSFX);
         Time.timeScale = 1;
+        meter.Reset();
+        score.Reset();
 		Application.LoadLevel (0);
 	}
 

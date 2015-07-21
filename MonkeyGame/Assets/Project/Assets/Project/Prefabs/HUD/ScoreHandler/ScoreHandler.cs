@@ -22,4 +22,9 @@ public class ScoreHandler : MonoBehaviour {
         scoreText1.text = "" + totalScore;
         scoreText2.text = "" + totalScore;
     }
+
+    public void Reset()
+    {
+        totalScore = 0;
+    }
 }

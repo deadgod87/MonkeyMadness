@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour {
     private float runSFXTimer = 0;
     private float runSFXPlayTime;
 
+    //Mouse Aim
+    Vector2 mousePos;
+
 
 
     //----------------------------------------Start and Update--------------------------------------------------------------
@@ -119,6 +122,8 @@ public class PlayerController : MonoBehaviour {
 
 
         //------Throw Stuff-----------//
+
+        mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
         if(Input.GetButton("Fire1"))
         {
