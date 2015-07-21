@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PointTextControl.cs" />
      <Compile Include="Assets\Project\Materials\Fonts\Script\scriptTexttest.cs" />
      <Compile Include="Assets\Project\Prefabs\Banana\Banana.cs" />
      <Compile Include="Assets\Project\Prefabs\CoffePotObj\CoffeeCollect.cs" />
@@ -65,6 +64,7 @@
      <Compile Include="Assets\Project\Scripts\LevelTimer.cs" />
      <Compile Include="Assets\Project\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Project\Scripts\PlatformDropTrigger.cs" />
+     <Compile Include="Assets\Project\Scripts\PointTextControl.cs" />
      <Compile Include="Assets\Project\Scripts\ScoreBoard.cs" />
      <None Include="Assets\Project\Materials\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
      <None Include="Assets\Project\Materials\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
