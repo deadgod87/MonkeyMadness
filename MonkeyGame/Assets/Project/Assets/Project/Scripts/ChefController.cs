@@ -46,12 +46,12 @@ public class ChefController : MonoBehaviour {
 
 			PlayerDist ();
 
-	        if(player.transform.position.x > transform.position.x)
+	        if(player.transform.position.x > transform.position.x + 0.1f)
     	    {
            	 	transform.localScale = new Vector3(10, 10, 10);
 				transform.position += transform.right * moveSpeed * Time.deltaTime;
         	}
-        	else
+        	if(player.transform.position.x < transform.position.x - 0.1f)
         	{
             	transform.localScale = new Vector3(-10, 10, 10);
 				transform.position -= transform.right * moveSpeed * Time.deltaTime;

@@ -21,7 +21,6 @@ public class BreakableItems : MonoBehaviour {
     private float destroyTime = 2.5f;
 
     private int playerScore = 10;
-    private int bananaScore = 5;
     private static int scoreMultiplier = 1;
 
     public static int ScoreMultiplier
@@ -53,7 +52,6 @@ public class BreakableItems : MonoBehaviour {
 	void Update () 
     {
         playerScore = 10 * scoreMultiplier;
-        bananaScore = 5 * scoreMultiplier;
 	}
 
     void OnTriggerEnter2D(Collider2D col)
@@ -63,14 +61,6 @@ public class BreakableItems : MonoBehaviour {
         {
 			rB.isKinematic = false;
             AddScore(playerScore);
-            used = true;
-            Destroy(gameObject, destroyTime);
-        }
-
-        if (col.tag == "Banana")
-        {
-            rB.isKinematic = false;
-            AddScore(bananaScore);
             used = true;
             Destroy(gameObject, destroyTime);
         }
