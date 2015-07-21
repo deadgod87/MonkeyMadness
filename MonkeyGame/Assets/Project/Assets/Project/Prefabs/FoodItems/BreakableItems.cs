@@ -20,7 +20,7 @@ public class BreakableItems : MonoBehaviour {
 
     private float destroyTime = 2.5f;
 
-    private int playerScore = 10;
+    private static int playerScore = 10;
     private static int scoreMultiplier = 1;
 
     public static int ScoreMultiplier
@@ -34,6 +34,19 @@ public class BreakableItems : MonoBehaviour {
     private ScoreHandler myScore;
     private GameObject gameController;
 
+    [SerializeField]
+    private GameObject pointText1;
+    [SerializeField]
+    private GameObject pointTextBG;
+
+    private float offsetX = -0.1f;
+    private float offsetY = 0.08f;
+    private Vector2 pointsPos;
+    private Vector2 pointsPos2;
+    private float initOffsetY = 1;
+
+    
+
 	// Use this for initialization
 	void Start () 
     {
@@ -46,6 +59,9 @@ public class BreakableItems : MonoBehaviour {
         mySprite = GetComponent<SpriteRenderer>();
         spriteId = UnityEngine.Random.Range(0, foodSprites.Length);
         mySprite.sprite = foodSprites[spriteId];
+
+        pointsPos = new Vector2(transform.position.x, transform.position.y + initOffsetY);
+        pointsPos2 = new Vector2(pointsPos.x + offsetX, pointsPos.y + offsetY);
 	}
 	
 	// Update is called once per frame
@@ -59,7 +75,18 @@ public class BreakableItems : MonoBehaviour {
 	
         if(col.tag == "Player")
         {
-			rB.isKinematic = false;
+            rB.isKinematic = false;
+
+            if(col.GetComponent<PlayerController>().MyDir)
+            {
+                rB.velocity = new Vector3(5, 2, 0);
+            }
+            if (!col.GetComponent<PlayerController>().MyDir)
+            {
+                rB.velocity = new Vector3(-5, 2, 0);
+            }
+
+            Physics2D.IgnoreCollision(col.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
             AddScore(playerScore);
             used = true;
             Destroy(gameObject, destroyTime);
@@ -74,6 +101,12 @@ public class BreakableItems : MonoBehaviour {
             //Debug.Log("You scored some points!");
             meterBar.AddProgress();
             myScore.UpdateScore(score);
+
+            Instantiate(pointText1, pointsPos, transform.rotation);
+            Instantiate(pointTextBG, pointsPos2, transform.rotation);
+
+            pointText1.GetComponent<TextMesh>().text = "+ " + playerScore;
+            pointTextBG.GetComponent<TextMesh>().text = "+ " + playerScore;
         }
         
     }

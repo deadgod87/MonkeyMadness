@@ -77,4 +77,12 @@ public class CoffeeMeter : MonoBehaviour
             BreakableItems.ScoreMultiplier += 1;
         }
     }
+
+    public void Reset()
+    {
+        progress = 0;
+        meterProgress = 0;
+        multiplierTimer = 0;
+        BreakableItems.ScoreMultiplier = 1;
+    }
 }

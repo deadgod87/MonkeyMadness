@@ -33,8 +33,8 @@ public class ExitDoor : MonoBehaviour {
     {
         MeterFilled();
 
-        Debug.Log("Meter Progress = " + meter.Progress);
-        Debug.Log("FullBar = " + meter.PassedProgress);
+       //Debug.Log("Meter Progress = " + meter.Progress);
+       //Debug.Log("FullBar = " + meter.PassedProgress);
 	}
 
     private void MeterFilled()
