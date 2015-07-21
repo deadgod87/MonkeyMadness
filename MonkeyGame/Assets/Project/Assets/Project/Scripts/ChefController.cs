@@ -14,7 +14,7 @@ public class ChefController : MonoBehaviour {
 	Transform player;
 
     [SerializeField]
-    private GameObject scoreBoard;
+    private GameObject gameOverPanel;
 
 	private Animator anim;
 
@@ -40,6 +40,7 @@ public class ChefController : MonoBehaviour {
 	void Update()
 	{
 	
+		//timer = Time.deltatime;
 		if (isActive)
 		{
 			anim.SetBool("IsActive", true);
@@ -84,10 +85,21 @@ public class ChefController : MonoBehaviour {
         	{
             	//player.GetComponent<PlayerController>().IsAlive = false;
             	Time.timeScale = 0;
-            	scoreBoard.SetActive(true);
+				gameOverPanel.SetActive(true);
         	}
+
+		}
+
+		if(other.tag == "Banana")
+		{
+			//timer = 0f;
+			//slow her movespeed to 1.5 
+			//after timer
 		}
 	}
+
+
+
 
 	public bool IsActive {
 		get {
