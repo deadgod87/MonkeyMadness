@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
         get { return myDir; }
     }
 
-    private float throwDelay = 0.5f;
+    [SerializeField] private float throwDelay = 0.5f;
     private float throwTimer = 0f;
     [SerializeField]private float timeHoldingInput = 0.0f; //Will use this if we decide to have an extended jump
 
