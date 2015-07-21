@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]private bool hasJumped = false;
     [SerializeField]private bool onGround = false;
     private bool myDir = false;
-
     private bool isAlive = true;
 
     public bool IsAlive
@@ -32,12 +31,26 @@ public class PlayerController : MonoBehaviour {
     {
         get { return myDir; }
     }
+
     private float throwDelay = 0.5f;
     private float throwTimer = 0f;
     [SerializeField]private float timeHoldingInput = 0.0f; //Will use this if we decide to have an extended jump
 
     private Animator myAnim; // access animator component
     private Rigidbody2D rB; // used to access the rigidbody component
+    private AudioSource myAudio;
+
+    //SFX
+    [SerializeField]
+    private AudioClip jumpSFX;
+    [SerializeField]
+    private AudioClip runSFX;
+    [SerializeField]
+    private AudioClip throwSFX;
+
+    private float runSFXTimer = 0;
+    private float runSFXPlayTime;
+
 
 
     //----------------------------------------Start and Update--------------------------------------------------------------
@@ -45,6 +58,8 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        runSFXPlayTime = runSFX.length;
+        myAudio = GetComponent<AudioSource>();
         myAnim = GetComponent<Animator>();
         rB = GetComponent<Rigidbody2D>();
         transform.localScale = new Vector3(-5, transform.localScale.y, transform.localScale.z);
@@ -134,6 +149,18 @@ public class PlayerController : MonoBehaviour {
 		{
             myAnim.SetBool("Moving", true);
 			rB.velocity += accel;
+
+            runSFXTimer += Time.deltaTime;
+            if(canJump)
+            {
+                if (runSFXTimer >= runSFXPlayTime)
+                {
+                    myAudio.PlayOneShot(runSFX);
+                    runSFXTimer = 0;
+                }
+            }
+           
+           
 		}
         else
         {
@@ -157,6 +184,7 @@ public class PlayerController : MonoBehaviour {
 
    private void HandleJumping()
     {
+        myAudio.PlayOneShot(jumpSFX);
         rB.velocity = new Vector2(rB.velocity.x, initJumpSpeed);
         hasJumped = true;
     }
@@ -184,6 +212,7 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleThrow()
     {
+        myAudio.PlayOneShot(throwSFX);
         Instantiate(banana, throwSpot.transform.position, banana.transform.rotation);
         throwTimer = 0f;
     }

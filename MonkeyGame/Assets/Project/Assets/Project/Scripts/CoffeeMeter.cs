@@ -16,9 +16,14 @@ public class CoffeeMeter : MonoBehaviour
     private Text scoreText1;
     [SerializeField]
     private Text scoreText2;
+
+    private AudioSource myAudio;
+    [SerializeField] private AudioClip fullSFX;
+    private bool playOnce = false;
     // Use this for initialization
     void Start()
     {
+        myAudio = GetComponent<AudioSource>();
         multiplierTimeHoldingVar = multiplierTime;
     }
 
@@ -32,6 +37,12 @@ public class CoffeeMeter : MonoBehaviour
 
         if (progress >= 1)
         {
+            if(!playOnce)
+            {
+                myAudio.PlayOneShot(fullSFX);
+                playOnce = true;
+            }
+
             multiplierTimer += Time.deltaTime;
             meterProgress -= Time.deltaTime / deceraseSpeed;
 
@@ -48,6 +59,7 @@ public class CoffeeMeter : MonoBehaviour
                 multiplierTime = multiplierTimeHoldingVar;
                 BreakableItems.ScoreMultiplier = 1;
                 progress = 0;
+                playOnce = false;
             }
         }
     }
