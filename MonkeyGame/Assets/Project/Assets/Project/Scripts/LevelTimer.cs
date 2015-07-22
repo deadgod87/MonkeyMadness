@@ -38,5 +38,11 @@ public class LevelTimer : MonoBehaviour {
             Time.timeScale = 0;
             scoreBoard.SetActive(true);
         }
+
+		if(timer <= 20)
+		{
+			//add SFX
+			timerText2.color = Color.red;
+		}
 	}
 }

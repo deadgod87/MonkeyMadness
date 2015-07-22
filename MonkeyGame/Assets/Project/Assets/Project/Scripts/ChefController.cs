@@ -21,7 +21,7 @@ public class ChefController : MonoBehaviour {
 
 	[SerializeField] private float moveSpeed = 3.0f;
 
-	private float myY;
+	//private float myY;
 
 	//private bool lostLife = false;
 
@@ -31,7 +31,7 @@ public class ChefController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		myY = transform.position.y;
+		//myY = transform.position.y;
 		anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		kbTimer = 0f;
@@ -44,7 +44,7 @@ public class ChefController : MonoBehaviour {
 	
 		kbTimer += Time.deltaTime;
 
-		if (kbTimer > 4.0f)
+		if (kbTimer > 2.0f)
 		{
 			moveSpeed = 4.0f;
 		}
@@ -85,30 +85,6 @@ public class ChefController : MonoBehaviour {
 		}
 	}
 
-	/*public void UpdateLives()
-	{
-
-		if (monkeyLives == 3 && lostLife) 
-		{
-			monkeyLives--;
-			lostLife = false;
-	
-			Debug.Log("OUCH");
-		}
-
-		else if (monkeyLives == 2 && lostLife)
-		{
-			monkeyLives--;
-			lostLife = false;
-			Debug.Log("OUCH");
-		}
-		else if (monkeyLives == 1)
-		{
-			Time.timeScale = 0;
-			gameOverPanel.SetActive(true);
-		}
-
-	}*/
 
 	void OnTriggerStay2D(Collider2D other)
 	{
@@ -116,12 +92,9 @@ public class ChefController : MonoBehaviour {
 		{
 			if(isAttacking)
         	{
-				//lostLife = true;
+			
 				player.GetComponent<PlayerController>().UpdateLives();
 
-            	//player.GetComponent<PlayerController>().IsAlive = false;
-            	//Time.timeScale = 0;
-				//gameOverPanel.SetActive(true);
         	}
 
 		}
@@ -133,10 +106,7 @@ public class ChefController : MonoBehaviour {
 
 		}
 	}
-
-
-
-
+	
 	public bool IsActive {
 		get {
 			return isActive;

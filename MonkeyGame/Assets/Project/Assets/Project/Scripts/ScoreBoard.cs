@@ -10,7 +10,7 @@ public class ScoreBoard : MonoBehaviour {
 	public Canvas scoreBoard;
 	public Button continueTxt;
 
-	bool scoreBoardActive = false;
+	//bool scoreBoardActive = false;
 
 	[SerializeField]private GameObject scoreboardPanel;
 

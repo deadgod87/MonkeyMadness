@@ -7,7 +7,7 @@ public class GameOverPanel : MonoBehaviour {
 	public Canvas gameOverBoard;
 	public Button continueTxt;
 	
-	bool gameOverActive = false;
+	//bool gameOverActive = false;
 	
 	[SerializeField]private GameObject gameOverPanel;
 	

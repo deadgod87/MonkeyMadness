@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -19,11 +20,14 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]private bool hasJumped = false;
     [SerializeField]private bool onGround = false;
     
-	[SerializeField]
-	private GameObject gameOverPanel;
+	[SerializeField]private GameObject gameOverPanel;
+	[SerializeField]private Text livesTxt; 
+	[SerializeField]private Text livesTxtOffset;
+
 
 	private bool myDir = false;
     private bool isAlive = true;
+
 
 	public int monkeyLives = 3;
 
@@ -255,7 +259,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (!isInvincible) {	
 			monkeyLives--;
-
+			livesTxt.text = "" + monkeyLives;
+			livesTxtOffset.text = "" + monkeyLives;
 			SetInvincible ();
 			Debug.Log ("OUCH");
 		}
