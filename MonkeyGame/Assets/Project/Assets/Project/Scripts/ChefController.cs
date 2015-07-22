@@ -13,9 +13,6 @@ public class ChefController : MonoBehaviour {
 	// Use distance to player 
 	Transform player;
 
-    [SerializeField]
-    private GameObject gameOverPanel;
-
 	private Animator anim;
 
 	private bool isActive = false; 
@@ -26,13 +23,18 @@ public class ChefController : MonoBehaviour {
 
 	private float myY;
 
+	//private bool lostLife = false;
+
+	[SerializeField]private float kbTimer;
+
+
 	// Use this for initialization
 	void Start () 
 	{
 		myY = transform.position.y;
 		anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
-
+		kbTimer = 0f;
 	}
 	
 	// Update is called once per frame
@@ -40,7 +42,13 @@ public class ChefController : MonoBehaviour {
 	void Update()
 	{
 	
-		//timer = Time.deltatime;
+		kbTimer += Time.deltaTime;
+
+		if (kbTimer > 4.0f)
+		{
+			moveSpeed = 4.0f;
+		}
+
 		if (isActive)
 		{
 			anim.SetBool("IsActive", true);
@@ -77,24 +85,52 @@ public class ChefController : MonoBehaviour {
 		}
 	}
 
+	/*public void UpdateLives()
+	{
+
+		if (monkeyLives == 3 && lostLife) 
+		{
+			monkeyLives--;
+			lostLife = false;
+	
+			Debug.Log("OUCH");
+		}
+
+		else if (monkeyLives == 2 && lostLife)
+		{
+			monkeyLives--;
+			lostLife = false;
+			Debug.Log("OUCH");
+		}
+		else if (monkeyLives == 1)
+		{
+			Time.timeScale = 0;
+			gameOverPanel.SetActive(true);
+		}
+
+	}*/
+
 	void OnTriggerStay2D(Collider2D other)
 	{
         if(other.tag == "Player")
 		{
 			if(isAttacking)
         	{
+				//lostLife = true;
+				player.GetComponent<PlayerController>().UpdateLives();
+
             	//player.GetComponent<PlayerController>().IsAlive = false;
-            	Time.timeScale = 0;
-				gameOverPanel.SetActive(true);
+            	//Time.timeScale = 0;
+				//gameOverPanel.SetActive(true);
         	}
 
 		}
 
 		if(other.tag == "Banana")
 		{
-			//timer = 0f;
-			//slow her movespeed to 1.5 
-			//after timer
+			kbTimer = 0f;
+			moveSpeed = 1.5f;
+
 		}
 	}
 

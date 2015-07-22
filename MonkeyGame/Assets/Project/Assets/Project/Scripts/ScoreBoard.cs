@@ -40,6 +40,7 @@ public class ScoreBoard : MonoBehaviour {
 	void Update()
 	{
 		UpdateScore ();
+	
 	}
 
 	public void UpdateScore()
@@ -48,6 +49,8 @@ public class ScoreBoard : MonoBehaviour {
 		
 		scoreText.text = "" + totalScore;
 	}
+
+
 	
 	/*public void ContinueInput()
 	{
