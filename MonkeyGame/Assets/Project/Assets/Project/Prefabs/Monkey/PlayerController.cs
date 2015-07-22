@@ -123,8 +123,6 @@ public class PlayerController : MonoBehaviour {
 
         //------Throw Stuff-----------//
 
-        mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
         if(Input.GetButton("Fire1"))
         {
             if (throwTimer >= throwDelay)
