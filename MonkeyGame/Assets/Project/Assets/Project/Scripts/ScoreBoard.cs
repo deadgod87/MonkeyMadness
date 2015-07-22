@@ -61,10 +61,15 @@ public class ScoreBoard : MonoBehaviour {
 
 	void Update()
 	{
+<<<<<<< HEAD
 		if(exitActive)
         {
             FinalScore(); 
         }
+=======
+		UpdateScore ();
+	
+>>>>>>> origin/master
 	}
 
 	public void UpdateScore()
@@ -73,6 +78,8 @@ public class ScoreBoard : MonoBehaviour {
 		
 		scoreText.text = "" + totalScore;
 	}
+
+
 	
     public void FinalScore()
     {

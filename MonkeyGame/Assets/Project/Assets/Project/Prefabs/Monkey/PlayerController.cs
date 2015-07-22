@@ -18,8 +18,17 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]private bool canJump = true;
     [SerializeField]private bool hasJumped = false;
     [SerializeField]private bool onGround = false;
-    private bool myDir = false;
+    
+	[SerializeField]
+	private GameObject gameOverPanel;
+
+	private bool myDir = false;
     private bool isAlive = true;
+
+	public int monkeyLives = 3;
+
+	[SerializeField]private float invincibleTimer = 0;
+	private bool isInvincible = false;
 
     public bool IsAlive
     {
@@ -71,6 +80,13 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+		invincibleTimer += Time.deltaTime;
+
+		if(invincibleTimer >= 5.0f)
+		{
+			SetDamageable();
+			//isInvincible = false;
+		}
         if(isAlive)
         {
             MovementControl();
@@ -220,6 +236,36 @@ public class PlayerController : MonoBehaviour {
         throwTimer = 0f;
     }
 
+	//Invincible 
 
+	void SetInvincible()
+	{
+		isInvincible = true;
+		invincibleTimer = 0; 
+	
+	}
 
+	void SetDamageable()
+	{
+		isInvincible = false;
+		//invincibleTimer = 0;
+	}
+
+	public void UpdateLives()
+	{
+		if (!isInvincible) {	
+			monkeyLives--;
+
+			SetInvincible ();
+			Debug.Log ("OUCH");
+		}
+
+		if (monkeyLives == 0) 
+			{
+				Time.timeScale = 0;
+				gameOverPanel.SetActive (true);
+			}
+	
+
+	}
 }
