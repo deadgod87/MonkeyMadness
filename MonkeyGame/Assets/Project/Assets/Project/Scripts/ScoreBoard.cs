@@ -61,15 +61,11 @@ public class ScoreBoard : MonoBehaviour {
 
 	void Update()
 	{
-<<<<<<< HEAD
 		if(exitActive)
         {
             FinalScore(); 
         }
-=======
-		UpdateScore ();
 	
->>>>>>> origin/master
 	}
 
 	public void UpdateScore()
