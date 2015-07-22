@@ -6,6 +6,7 @@ public class LevelExit : MonoBehaviour {
 
     [SerializeField]
     private GameObject scoreBoard;
+    private ScoreBoard scoreBoardScript;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -13,6 +14,9 @@ public class LevelExit : MonoBehaviour {
         {
             Time.timeScale = 0;
             scoreBoard.SetActive(true);
+            scoreBoardScript = GameObject.Find("GameController").GetComponent<ScoreBoard>();
+            scoreBoardScript.ExitActive = true;
+            
         }
     }
 }

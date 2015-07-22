@@ -12,6 +12,9 @@ public class MischiefMeter : MonoBehaviour {
     private GameObject[] foodItems;
     private Animator myAnim;
 
+    [SerializeField]
+    private float percentToComplete = 0.75f;
+
     [SerializeField] private Text progressText;
 
 	// Use this for initialization
@@ -21,7 +24,7 @@ public class MischiefMeter : MonoBehaviour {
         foodItems = GameObject.FindGameObjectsWithTag("Food") as GameObject[];
         itemsInScene = foodItems.Length;
         maxProgress = 1;
-        passedProgress = maxProgress * 0.75f;
+        passedProgress = maxProgress * percentToComplete;
         newProgress = maxProgress/itemsInScene;
 	}
 	

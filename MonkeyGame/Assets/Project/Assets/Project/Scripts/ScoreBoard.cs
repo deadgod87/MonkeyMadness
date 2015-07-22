@@ -22,12 +22,34 @@ public class ScoreBoard : MonoBehaviour {
 	private AudioSource myAudio;
 
 	private int totalScore = 0;
+    private int pointsPerSecond = 10;
 
     private CoffeeMeter meter;
     private ScoreHandler score;
 
+    private GameObject goldStar1;
+    private GameObject goldStar2;
+    private GameObject goldStar3;
+
+    [SerializeField]
+    private float starFilledPoints = 250;
+
+    private LevelTimer gameTimer;
+
+    private bool exitActive = false;
+
+    public bool ExitActive
+    {
+        get { return exitActive; }
+        set { exitActive = value; }
+    }
+
 	void Start () 
 	{
+        goldStar1 = GameObject.Find("GoldStar_1");
+        goldStar2 = GameObject.Find("GoldStar_2");
+        goldStar3 = GameObject.Find("GoldStar_3");
+        gameTimer = GetComponent<LevelTimer>();
 		myAudio = GetComponent<AudioSource> ();
 		scoreBoard = scoreBoard.GetComponent<Canvas> ();
 		continueTxt = continueTxt.GetComponent<Button> ();
@@ -39,7 +61,10 @@ public class ScoreBoard : MonoBehaviour {
 
 	void Update()
 	{
-		UpdateScore ();
+		if(exitActive)
+        {
+            FinalScore(); 
+        }
 	}
 
 	public void UpdateScore()
@@ -49,26 +74,42 @@ public class ScoreBoard : MonoBehaviour {
 		scoreText.text = "" + totalScore;
 	}
 	
-	/*public void ContinueInput()
-	{
-		scoreBoard.enabled = true;
-		continueTxt.enabled = false;
-		
-	}
-	
-	public void ScoreBoardPanel()
-	{
-		if(scoreBoardActive)
-		{
-			scoreboardPanel.SetActive(false);
-			scoreBoardActive = false;
-		}
-		else
-		{
-			scoreboardPanel.SetActive(true);
-			scoreBoardActive = true;
-		}
-	}*/
+    public void FinalScore()
+    {
+        UpdateScore();
+        totalScore += (int)gameTimer.Timer * pointsPerSecond;
+        scoreText.text = "" + totalScore;
+        if(totalScore >= starFilledPoints)
+        {
+            goldStar1.GetComponent<Image>().fillAmount = 1;
+            totalScore -= (int)starFilledPoints;
+        }
+        else
+        {
+            goldStar1.GetComponent<Image>().fillAmount = totalScore/starFilledPoints;
+        }
+        if (totalScore >= starFilledPoints && goldStar1.GetComponent<Image>().fillAmount == 1)
+        {
+            goldStar2.GetComponent<Image>().fillAmount = 1;
+            totalScore -= (int)starFilledPoints;
+        }
+        else
+        {
+            goldStar2.GetComponent<Image>().fillAmount = totalScore / starFilledPoints;
+        }
+        if (totalScore >= starFilledPoints && goldStar2.GetComponent<Image>().fillAmount == 1)
+        {
+            goldStar3.GetComponent<Image>().fillAmount = 1;
+            totalScore -= (int)starFilledPoints;
+        }
+        else
+        {
+            goldStar3.GetComponent<Image>().fillAmount = totalScore / starFilledPoints;
+        }
+           
+        
+
+    }
 	
 	public void LoadLevel()
 	{

@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: e1d3e292032c97d45a9e418a0b984ea4
-timeCreated: 1437538055
+guid: 16fdb833aaa54b84db525607b2cd0c93
+timeCreated: 1437534532
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bar2_0
+    21300000: stars_0
+    21300002: stars_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -41,22 +42,32 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: .367179632, y: .477009982}
-  spriteBorder: {x: 39, y: 74, z: 209, w: 84}
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: bar2_0
+    - name: stars_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 74
-        width: 551
-        height: 46
+        x: 0
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stars_1
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

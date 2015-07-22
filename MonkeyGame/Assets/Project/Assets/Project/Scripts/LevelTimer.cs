@@ -7,6 +7,12 @@ public class LevelTimer : MonoBehaviour {
    [SerializeField] private float startTime = 99;
    private float timer;
 
+   public float Timer
+   {
+       get { return timer; }
+       set { timer = value; }
+   }
+
    [SerializeField] private Text timerText1;
    [SerializeField] private Text timerText2;
 
