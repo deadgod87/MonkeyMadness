@@ -30,9 +30,15 @@ public class PlayerController : MonoBehaviour {
 
 
     [SerializeField]
-    private int monkeyLives = 3;
+    private int monkeyLives;
 
-	private bool isInvincible = false;
+    private bool isInvincible = false;
+
+    public bool IsInvincible
+    {
+        get { return isInvincible; }
+        set { isInvincible = value; }
+    }
 
     public bool IsAlive
     {
@@ -94,11 +100,6 @@ public class PlayerController : MonoBehaviour {
         {
             MovementControl();
         } 
-
-        if(isInvincible)
-        {
-            StartCoroutine(TakeDamageDelay());
-        }
 
         //Debug.Log("CanJump = " + canJump);
         //Debug.Log("HasJumped = " + hasJumped);
@@ -251,9 +252,10 @@ public class PlayerController : MonoBehaviour {
 			livesTxt.text = "" + monkeyLives;
 			livesTxtOffset.text = "" + monkeyLives;
             isInvincible = true;
+            StartCoroutine(TakeDamageDelay());
 		}
 
-		if (monkeyLives == 0) 
+		if (monkeyLives < 0) 
 			{
 				Time.timeScale = 0;
 				gameOverPanel.SetActive (true);

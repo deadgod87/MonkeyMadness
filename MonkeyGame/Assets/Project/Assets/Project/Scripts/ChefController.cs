@@ -97,8 +97,13 @@ public class ChefController : MonoBehaviour {
 		{
 			if(isAttacking)
         	{
+                if(!player.GetComponent<PlayerController>().IsInvincible)
+                {
+                    player.GetComponent<PlayerController>().UpdateLives();
+                    player.GetComponent<PlayerController>().IsInvincible = true;
+                }
 			
-				player.GetComponent<PlayerController>().UpdateLives();
+				
 
         	}
 
