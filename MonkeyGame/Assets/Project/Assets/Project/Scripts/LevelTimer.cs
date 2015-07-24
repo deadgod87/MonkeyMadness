@@ -29,20 +29,29 @@ public class LevelTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        timer -= Time.deltaTime;
-        timerText1.text = "" + (int)timer;
-        timerText2.text = "" + (int)timer;
-
-        if(timer <= 0)
+        if(startTime > 0)
         {
-            Time.timeScale = 0;
-            scoreBoard.SetActive(true);
-        }
+            timer -= Time.deltaTime;
+            timerText1.text = "" + (int)timer;
+            timerText2.text = "" + (int)timer;
 
-		if(timer <= 20)
-		{
-			//add SFX
-			timerText2.color = Color.red;
-		}
+            if (timer <= 0)
+            {
+                Time.timeScale = 0;
+                scoreBoard.SetActive(true);
+            }
+
+            if (timer <= 20)
+            {
+                //add SFX
+                timerText2.color = Color.red;
+            }
+        }
+        else
+        {
+            timerText1.text = "00" ;
+            timerText2.text = "00" ;
+        }
+       
 	}
 }

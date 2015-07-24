@@ -20,13 +20,17 @@ public class ChefController : MonoBehaviour {
 	private bool isAttacking = false;
 
 	[SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField]
+    private float slowDownSpeed = 2.0f;
+    private float speed;
 
 	//private float myY;
 
 	//private bool lostLife = false;
 
-	[SerializeField]private float kbTimer;
-
+	private float kbTimer;
+    [SerializeField]
+    private float slowTime = 2.0f;
 
 	// Use this for initialization
 	void Start () 
@@ -35,6 +39,7 @@ public class ChefController : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		kbTimer = 0f;
+        speed = moveSpeed;
 	}
 	
 	// Update is called once per frame
@@ -44,9 +49,9 @@ public class ChefController : MonoBehaviour {
 	
 		kbTimer += Time.deltaTime;
 
-		if (kbTimer > 2.0f)
+		if (kbTimer >= slowTime)
 		{
-			moveSpeed = 4.0f;
+			speed = moveSpeed;
 		}
 
 		if (isActive)
@@ -58,12 +63,12 @@ public class ChefController : MonoBehaviour {
 	        if(player.transform.position.x > transform.position.x + 0.1f)
     	    {
            	 	transform.localScale = new Vector3(10, 10, 10);
-				transform.position += transform.right * moveSpeed * Time.deltaTime;
+				transform.position += transform.right * speed * Time.deltaTime;
         	}
         	if(player.transform.position.x < transform.position.x - 0.1f)
         	{
             	transform.localScale = new Vector3(-10, 10, 10);
-				transform.position -= transform.right * moveSpeed * Time.deltaTime;
+				transform.position -= transform.right * speed * Time.deltaTime;
     	    }
 		}
 
@@ -102,7 +107,7 @@ public class ChefController : MonoBehaviour {
 		if(other.tag == "Banana")
 		{
 			kbTimer = 0f;
-			moveSpeed = 1.5f;
+			speed = slowDownSpeed;
 
 		}
 	}

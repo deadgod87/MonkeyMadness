@@ -10,6 +10,7 @@ public class MenuScript : MonoBehaviour {
 	public Canvas quitMenu;
 	public Button startTxt;
 	public Button exitTxt;
+    public Button instructionTxt;
 	[SerializeField]private GameObject instructionPanel;
 
 	[SerializeField] private AudioClip pressSFX;
@@ -17,6 +18,9 @@ public class MenuScript : MonoBehaviour {
 
 	private AudioSource myAudio;
 	bool instActive = false;
+
+    [SerializeField]
+    private GameObject difficultyPanel;
 
 	// Use this for initialization
 	void Start () 
@@ -27,6 +31,7 @@ public class MenuScript : MonoBehaviour {
 		exitTxt = exitTxt.GetComponent<Button> ();
 		quitMenu.enabled = false;
 		instructionPanel.SetActive (false);
+        difficultyPanel.SetActive(false);
 	}
 
 	public void ExitInput()
@@ -35,6 +40,7 @@ public class MenuScript : MonoBehaviour {
 		quitMenu.enabled = true;
 		startTxt.enabled = false;
 		exitTxt.enabled = false;
+        instructionTxt.enabled = false;
 
 	}
 
@@ -44,6 +50,7 @@ public class MenuScript : MonoBehaviour {
 		quitMenu.enabled = false;
 		startTxt.enabled = true;
 		exitTxt.enabled = true;
+        instructionTxt.enabled = true;
 	}
 
 	public void InstructionsScreen()
@@ -61,12 +68,6 @@ public class MenuScript : MonoBehaviour {
 		}
 	}
 
-	public void LoadLevel()
-	{
-		myAudio.PlayOneShot (pressSFX);
-		Application.LoadLevel (1);
-	}
-
 	public void QuitGame()
 	{
 		myAudio.PlayOneShot (pressSFX);
@@ -77,4 +78,30 @@ public class MenuScript : MonoBehaviour {
 	{
 		myAudio.PlayOneShot (enterSFX);
 	}
+
+    public void LoadEasy()
+    {
+        myAudio.PlayOneShot(pressSFX);
+        Application.LoadLevel("Easy");
+    }
+
+    public void LoadNormal()
+    {
+        myAudio.PlayOneShot(pressSFX);
+        Application.LoadLevel("Normal");
+    }
+
+    public void LoadHard()
+    {
+        myAudio.PlayOneShot(pressSFX);
+        Application.LoadLevel("Hard");
+    }
+
+    public void PressedPlay()
+    {
+        difficultyPanel.SetActive(true);
+        startTxt.enabled = false;
+        exitTxt.enabled = false;
+        instructionTxt.enabled = false;
+    }
 }

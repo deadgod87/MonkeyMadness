@@ -29,9 +29,9 @@ public class PlayerController : MonoBehaviour {
     private bool isAlive = true;
 
 
-	public int monkeyLives = 3;
+    [SerializeField]
+    private int monkeyLives = 3;
 
-	[SerializeField]private float invincibleTimer = 0;
 	private bool isInvincible = false;
 
     public bool IsAlive
@@ -68,33 +68,37 @@ public class PlayerController : MonoBehaviour {
     Vector2 mousePos;
 
 
+    private Color color;
+
 
     //----------------------------------------Start and Update--------------------------------------------------------------
 
 	// Use this for initialization
 	void Start ()
     {
+        color = GetComponent<SpriteRenderer>().color;
         runSFXPlayTime = runSFX.length;
         myAudio = GetComponent<AudioSource>();
         myAnim = GetComponent<Animator>();
         rB = GetComponent<Rigidbody2D>();
         transform.localScale = new Vector3(-5, transform.localScale.y, transform.localScale.z);
+        livesTxt.text = "" + monkeyLives;
+        livesTxtOffset.text = "" + monkeyLives;
+
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-		invincibleTimer += Time.deltaTime;
-
-		if(invincibleTimer >= 5.0f)
-		{
-			SetDamageable();
-			//isInvincible = false;
-		}
         if(isAlive)
         {
             MovementControl();
         } 
+
+        if(isInvincible)
+        {
+            StartCoroutine(TakeDamageDelay());
+        }
 
         //Debug.Log("CanJump = " + canJump);
         //Debug.Log("HasJumped = " + hasJumped);
@@ -240,29 +244,13 @@ public class PlayerController : MonoBehaviour {
         throwTimer = 0f;
     }
 
-	//Invincible 
-
-	void SetInvincible()
-	{
-		isInvincible = true;
-		invincibleTimer = 0; 
-	
-	}
-
-	void SetDamageable()
-	{
-		isInvincible = false;
-		//invincibleTimer = 0;
-	}
-
 	public void UpdateLives()
 	{
 		if (!isInvincible) {	
 			monkeyLives--;
 			livesTxt.text = "" + monkeyLives;
 			livesTxtOffset.text = "" + monkeyLives;
-			SetInvincible ();
-			Debug.Log ("OUCH");
+            isInvincible = true;
 		}
 
 		if (monkeyLives == 0) 
@@ -270,7 +258,27 @@ public class PlayerController : MonoBehaviour {
 				Time.timeScale = 0;
 				gameOverPanel.SetActive (true);
 			}
-	
-
 	}
+
+    IEnumerator TakeDamageDelay()
+    {
+
+        for (var i = 1; i < 7; i++)
+        {
+            int alphaZero = i - i;
+            int alphaOne = i / i;
+            //sets the Color to invisible
+            color.a = alphaZero;
+            GetComponent<SpriteRenderer>().color = color;
+            //Waits for seconds for the next color change
+            yield return new WaitForSeconds(0.2f);
+            //Sets the color back to normal
+            color.a = alphaOne;
+            GetComponent<SpriteRenderer>().color = color;
+            //Waits for seconds for the next color change
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        isInvincible = false;
+    }
 }
