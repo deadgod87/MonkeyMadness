@@ -97,6 +97,11 @@ public class MenuScript : MonoBehaviour {
         Application.LoadLevel("Hard");
     }
 
+    public void LoadCredits()
+    {
+        Application.LoadLevel("Credits");
+    }
+
     public void PressedPlay()
     {
         difficultyPanel.SetActive(true);
