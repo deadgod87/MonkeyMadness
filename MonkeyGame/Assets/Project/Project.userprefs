@@ -1,13 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Project\Scripts\LevelTimer.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Project\Prefabs\Monkey\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Project\Prefabs\Banana\Banana.cs" Line="38" Column="1" />
-      <File FileName="Assets\Project\Prefabs\HUD\ScoreHandler\ScoreHandler.cs" Line="13" Column="8" />
-      <File FileName="Assets\Project\Scripts\ChefController.cs" Line="34" Column="5" />
-      <File FileName="Assets\Project\Scripts\GameOverPanel.cs" Line="60" Column="1" />
-      <File FileName="Assets\Project\Scripts\ScoreBoard.cs" Line="13" Column="4" />
-      <File FileName="Assets\Project\Scripts\LevelTimer.cs" Line="44" Column="13" />
+      <File FileName="Assets\Project\Prefabs\Monkey\PlayerController.cs" Line="290" Column="1" />
+      <File FileName="Assets\Project\Prefabs\Banana\Banana.cs" Line="1" Column="1" />
+      <File FileName="Assets\Project\Prefabs\HUD\ScoreHandler\ScoreHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Project\Scripts\ChefController.cs" Line="129" Column="1" />
+      <File FileName="Assets\Project\Scripts\GameOverPanel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Project\Scripts\ScoreBoard.cs" Line="1" Column="1" />
+      <File FileName="Assets\Project\Scripts\LevelTimer.cs" Line="58" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour {
     private AudioClip runSFX;
     [SerializeField]
     private AudioClip throwSFX;
+	[SerializeField]
+	private AudioClip hitSFX;
 
     private float runSFXTimer = 0;
     private float runSFXPlayTime;
@@ -249,6 +251,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (!isInvincible) {	
 			monkeyLives--;
+			myAudio.PlayOneShot (hitSFX);
 			livesTxt.text = "" + monkeyLives;
 			livesTxtOffset.text = "" + monkeyLives;
             isInvincible = true;
