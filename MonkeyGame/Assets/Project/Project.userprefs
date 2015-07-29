@@ -1,6 +1,7 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
 <<<<<<< HEAD
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Project\Scripts\ScoreBoard.cs">
     <Files>
       <File FileName="Assets\Project\Scripts\GoExitPanel.cs" Line="29" Column="4" />
@@ -15,12 +16,19 @@
 =======
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Project\Scripts\LevelTimer.cs">
     <Files>
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Project\Scripts\LevelTimer.cs">
+    <Files>
+>>>>>>> origin/master
       <File FileName="Assets\Project\Prefabs\Banana\Banana.cs" Line="38" Column="1" />
       <File FileName="Assets\Project\Prefabs\HUD\ScoreHandler\ScoreHandler.cs" Line="13" Column="8" />
       <File FileName="Assets\Project\Scripts\ChefController.cs" Line="34" Column="5" />
       <File FileName="Assets\Project\Scripts\GameOverPanel.cs" Line="60" Column="1" />
       <File FileName="Assets\Project\Scripts\ScoreBoard.cs" Line="13" Column="4" />
       <File FileName="Assets\Project\Scripts\LevelTimer.cs" Line="44" Column="13" />
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
     </Files>
   </MonoDevelop.Ide.Workbench>
