@@ -14,6 +14,7 @@ public class MischiefMeter : MonoBehaviour {
 
     [SerializeField]
     private float percentToComplete = 0.75f;
+	[SerializeField]private GameObject goExitPanel;
 
     [SerializeField] private Text progressText;
 
@@ -46,6 +47,8 @@ public class MischiefMeter : MonoBehaviour {
         if (progress >= passedProgress)
         {
             myAnim.SetBool("IsFull", true);
+			goExitPanel.SetActive(true);
+
         }
     }
 
